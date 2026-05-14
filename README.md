@@ -1,6 +1,8 @@
 # Electric-Vehicle-Cruise-Control
 Electric Vehicle Cruise Control is a feedback control system that maintains a set speed by adjusting motor torque based on error between actual and desired speed. Using a PID controller, it ensures stable speed tracking, improves comfort, and enhances energy efficiency under varying road conditions.
 
+---
+
 1. Objective
 
     To design and simulate a cruise control system that maintains a constant vehicle speed under varying road conditions using a PI/PID controller, ensuring:
@@ -13,7 +15,9 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
   
     -Stability under disturbance
 
-3. System Modeling
+---
+
+2. System Modeling
 
     The vehicle dynamics are given by the transfer function:
    
@@ -29,6 +33,8 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
    
                   τ=5seconds
 
+---
+
 4. Open Loop Analysis
 
     Without controller:
@@ -40,6 +46,8 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
    -Cannot reject disturbance
 
    Hence, a controller is required.
+
+---
 
 5. Controller Design
 
@@ -53,9 +61,11 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
 
    Selected values (suitable for project):
 
-   -Kp=2
+       -Kp=2
 
-   -Ki=0.8
+       -Ki=0.8
+
+---
 
 6. Closed Loop System
 
@@ -65,63 +75,69 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
 
                T(s)= (2+0.8/s)(1/(5s+1))/1+(2+0.8/s)(1/(5s+1))
 
+---
+
 7. Simulink Implementation Steps
 
    Blocks Required
 
-   -Step (Reference speed)
+       -Step (Reference speed)
 
-   -Sum (Error calculation)
+       -Sum (Error calculation)
 
-   -PID Controller (set to PI mode)
+       -PID Controller (set to PI mode)
 
-   -Transfer Function block → 1/(5s+1)
+       -Transfer Function block → 1/(5s+1)
 
-   -Scope
+       -Scope
 
-   -Step (Disturbance)
+       -Step (Disturbance)
 
    Connections
 
-   -Step → (+) Sum
+       -Step → (+) Sum
 
-   -Output → (–) Sum
+       -Output → (–) Sum
 
-   -Sum → PI Controller
+       -Sum → PI Controller
 
-   -Controller → Transfer Function
+       -Controller → Transfer Function
 
-   -Output → Scope
+       -Output → Scope
 
    Disturbance Setup
 
-   -Add disturbance using Sum block
+       -Add disturbance using Sum block
 
-   -Step disturbance:
+       -Step disturbance:
 
-       -Time = 10 s
+           -Time = 10 s
 
-       -Magnitude = small (e.g., 0.2)
+           -Magnitude = small (e.g., 0.2)
+
+---
 
 8. Simulation Results (Expected)
 
    Without Controller
 
-   -Slow rise time
+       -Slow rise time
 
-   -Large steady-state error
+       -Large steady-state error
 
-   -Disturbance causes speed drop
+       -Disturbance causes speed drop
 
    With PI Controller
 
-   -Rise time: Improved
+       -Rise time: Improved
 
-   -Overshoot: < 5%
+       -Overshoot: < 5%
 
-   -Steady-state error: ≈ 0%
+       -Steady-state error: ≈ 0%
 
-   -Disturbance rejection: Good recovery
+       -Disturbance rejection: Good recovery
+
+---
 
 8. Performance Metrics
 
@@ -132,17 +148,21 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
    | Overshoot          | < 5%           |
    | Steady-State Error | ≈ 0%           |
 
+---
+
 9. Disturbance Analysis
 
    At t=10s:
 
-   -Speed temporarily drops due to slope
+       -Speed temporarily drops due to slope
 
-   -Controller increases throttle
+       -Controller increases throttle
 
-   -Speed returns to reference quickly
+       -Speed returns to reference quickly
 
    Demonstrates robustness of system
+
+---
 
 11. MATLAB Code
 
@@ -168,9 +188,13 @@ Electric Vehicle Cruise Control is a feedback control system that maintains a se
 
     title('Closed Loop Step Response');
 
+---
+
 11. Conclusion
 
     The designed PI-based cruise control system successfully maintains the desired vehicle speed with minimal steady-state error and low overshoot. It effectively         compensates for disturbances such as road slope and ensures stable and smooth operation. The system meets all specified performance criteria.
+
+---
 
 12. Future Scope
 
