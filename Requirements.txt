@@ -1,12 +1,3 @@
-Requirements:
-This project requires the following software:
--MATLAB (R2020a or later recommended)
--Simulink (for model-based simulation, optional)
--Control System Toolbox (for transfer function and system analysis)
-
-Required MATLAB Functions/Toolboxes:
--tf() – Transfer function modeling
--feedback() – Closed-loop system
--step() – Step response analysis
--stepinfo() – Performance metrics
--lsim() – Time-domain simulation with disturbance
+MATLAB
+SIMULINK
+CONTROL SYSTEM TOOL BOX
